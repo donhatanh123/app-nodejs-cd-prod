@@ -87,7 +87,7 @@
         comparisons:
           image: strict
 
-    - name: Re-create a Nginx container
+  - name: Re-create a Nginx container
       docker_container:
         name: nhatanh-nginx
         image: nginx
@@ -106,18 +106,18 @@
         comparisons:
           image: strict
         
-    - name: Copy nginx.conf to Nhatanh Nginx container
+  - name: Copy nginx.conf to Nhatanh Nginx container
       docker_copy:
         src: ./nginx.conf
         dest: /etc/nginx/nginx.conf
         container: nhatanh-nginx
         
-    - name: Restart Nhatanh Nginx container
+  - name: Restart Nhatanh Nginx container
       docker_container:
         name: nhatanh-nginx
         state: restarted
 
-    - name: Prune everything
+  - name: Prune everything
       community.docker.docker_prune:
         containers: true
         images: true
