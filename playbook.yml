@@ -114,11 +114,7 @@
         group: ubuntu
       
     - name: Sao chép file từ máy chủ Docker vào container
-      docker_cp:
-        container: nhatanh-nginx
-        src: /home/ubuntu/nginx.conf
-        dest: /etc/nginx/nginx.conf
-      become: no
+      shell: sudo docker cp /home/ubuntu/nginx.conf nhatanh-nginx:/etc/nginx/nginx.conf
 
     - name: Restart Nhatanh Nginx container
       docker_container:
