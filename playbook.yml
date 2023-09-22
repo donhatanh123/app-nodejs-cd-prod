@@ -87,7 +87,7 @@
         comparisons:
           image: strict
 
-  - name: Re-create a Nginx container
+    - name: Re-create a Nginx container
       docker_container:
         name: nhatanh-nginx
         image: nginx
@@ -95,24 +95,24 @@
           - name: test
             aliases:
               - test
+        detach: true
         state: started
         recreate: yes
         exposed_ports:
           - 80
-        detach: true
         published_ports:
           - 80:80
         pull: true
         comparisons:
           image: strict
-        
-  - name: Copy nginx.conf to Nhatanh Nginx container
-      docker_copy:
+
+    - name: Copy nginx.conf to Nhatanh Nginx container
+      ansible.builtin.copy:
         src: ./nginx.conf
         dest: /etc/nginx/nginx.conf
         container: nhatanh-nginx
-        
-  - name: Restart Nhatanh Nginx container
+
+    - name: Restart Nhatanh Nginx container
       docker_container:
         name: nhatanh-nginx
         state: restarted
