@@ -107,10 +107,11 @@
           image: strict
 
     - name: Copy nginx.conf to Nhatanh Nginx container
-      docker_copy:
-        src: ./nginx.conf
-        dest: /etc/nginx/nginx.conf
-        container: nhatanh-nginx
+      docker_container:
+        name: nhatanh-nginx
+        copy:
+          src: ./nginx.conf
+          dest: /etc/nginx/nginx.conf
 
     - name: Restart Nhatanh Nginx container
       docker_container:
