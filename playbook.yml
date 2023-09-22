@@ -106,11 +106,12 @@
         comparisons:
           image: strict
 
-    - name: Sao chép file vào máy chủ Docker
-      copy:
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
         src: ./nginx.conf
         dest: /home/ubuntu/nginx.conf
-      delegate_to: localhost
+        owner: ubuntu
+        group: ubuntu
       
     - name: Sao chép file từ máy chủ Docker vào container
       docker_container:
