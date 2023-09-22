@@ -107,11 +107,20 @@
           image: strict
 
     - name: Copy nginx.conf to Nhatanh Nginx container
-      ansible.builtin.copy:
-        src: ./nginx.conf
-        dest: /etc/nginx/nginx.conf
-        owner: ubuntu
-        group: ubuntu
+      hosts: localhost
+      gather_facts: no
+      tasks:
+        - name: Sao chép file vào máy chủ Docker
+          copy:
+            src: ./nginx.conf
+            dest: /home/ubuntu/nginx.conf
+          delegate_to: localhost
+        - name: Sao chép file từ máy chủ Docker vào container
+          docker_container:
+            name: nhatanh-nginx
+            src: /home/ubuntu/nginx.conf
+            dest: /etc/nginx/nginx.conf
+          delegate_to: localhost
 
     - name: Restart Nhatanh Nginx container
       docker_container:
