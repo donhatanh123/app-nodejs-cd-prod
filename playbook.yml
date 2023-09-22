@@ -107,11 +107,11 @@
           image: strict
 
     - name: Copy nginx.conf to Nhatanh Nginx container
-      docker_cp:
+      ansible.builtin.copy:
         src: ./nginx.conf
         dest: /etc/nginx/nginx.conf
-        container: nhatanh-nginx
-      delegate_to: localhost
+        owner: ubuntu
+        group: ubuntu
 
     - name: Restart Nhatanh Nginx container
       docker_container:
