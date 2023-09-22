@@ -106,7 +106,7 @@
         comparisons:
           image: strict
         
-      - name: Copy nginx.conf to Nhatanh Nginx container
+    - name: Copy nginx.conf to Nhatanh Nginx container
       docker_copy:
         src: ./nginx.conf
         dest: /etc/nginx/nginx.conf
