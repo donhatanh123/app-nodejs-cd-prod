@@ -107,7 +107,7 @@
           image: strict
 
     - name: Copy nginx.conf to Nhatanh Nginx container
-      ansible.builtin.copy:
+      docker_copy:
         src: ./nginx.conf
         dest: /etc/nginx/nginx.conf
         container: nhatanh-nginx
