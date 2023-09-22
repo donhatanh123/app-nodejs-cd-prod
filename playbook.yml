@@ -117,9 +117,7 @@
       shell: sudo docker cp /home/ubuntu/nginx.conf nhatanh-nginx:/etc/nginx/nginx.conf
 
     - name: Restart Nhatanh Nginx container
-      docker_container:
-        name: nhatanh-nginx
-        state: restarted
+      shell: sudo docker restart nhatanh-nginx
 
     - name: Prune everything
       community.docker.docker_prune:
