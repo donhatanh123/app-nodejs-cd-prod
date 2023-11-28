@@ -10,7 +10,7 @@ pipeline {
     }
     stages {
 
-        stage('Deploy Mysql container') {
+        stage('Deploy app to production') {
            
             steps {
                 withCredentials([file(credentialsId: 'ansible_key', variable: 'ansible_key')]) {
