@@ -76,7 +76,7 @@
     - name: Re-create a NodeJS container
       docker_container:
         name: nhatanh-nodejs
-        image: donhatanh2000/nodejs
+        image: donhatanh2000/nodejs:${TAG}
         networks:
           - name: test
             aliases:
