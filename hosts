@@ -1,2 +1,2 @@
 [host]
-ec2-43-198-152-21.ap-east-1.compute.amazonaws.com   ansible_user=ubuntu
+43.198.81.9   ansible_user=ubuntu
