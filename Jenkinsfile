@@ -7,6 +7,7 @@ pipeline {
     }
     environment {
         ANSIBLE_HOST_KEY_CHECKING = 'False'
+        TAG = "11.12.2023-v11"
     }
     stages {
 
@@ -20,7 +21,7 @@ pipeline {
                     sh 'ansible --version'
                     sh 'ls -la'
                     sh 'chmod 400 ansible_key '
-                    sh 'ansible-playbook -i hosts --private-key ansible_key playbook.yml'
+                    sh 'ansible-playbook -i hosts --private-key ansible_key -e "TAG=${TAG}" playbook.yml'
             }
             }
         }
