@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
         ANSIBLE_HOST_KEY_CHECKING = 'False'
-        TAG = "11.12.2023-v12"
+        TAG = "13.12.2023-v15"
     }
     stages {
 
